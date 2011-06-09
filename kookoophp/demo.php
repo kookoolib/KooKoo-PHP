@@ -217,7 +217,7 @@ else if($_REQUEST['event'] == 'GotDTMF' && $_SESSION['next_goto'] == 'Menu1_Chec
 	  {
 	
      $_SESSION['dial'] = $_REQUEST['data'];
-     $r->addPlayText('please wait while we transfer your call to out customer care');
+     $r->addPlayText('please wait while we transfer your call to our customer care');
 	 $r->addDial($_SESSION['dial'],'true',1000,30,'ring');
 	 $_SESSION['next_goto'] = 'Dial1_Status';
      }
