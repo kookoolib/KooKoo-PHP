@@ -103,12 +103,16 @@
            	$this->response->appendChild($dial);
          }
        //for conferencing the call
-       	public function addConference($confno)
+		 public function addConference($confno,$record="true")
          {
-         	//$confno confirence number to set
-         	$conf= $this->doc->createElement("conference",$confno);
-          	$this->response->appendChild($conf);
+                //$confno confirence number to set
+                $conf= $this->doc->createElement("conference",$confno);
+                $conf ->setAttribute( "record", $record ); // to enable conference recording, record = 'true'
+                // record file you can get http://kookoo.in/recordings/<kookoo-username>/<did>_<confno>.wav
+                $this->response->appendChild($conf);
          }
+
+
  		//send sms
 		public function sendSms($text,$no)
 		 {
