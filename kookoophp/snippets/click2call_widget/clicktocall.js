@@ -52,11 +52,7 @@ function main() {
         var jsonp_url = "click2call.php?number="+number+"&callback=?";
         $.getJSON(jsonp_url, function(data) {
           //$('#kookoo_click2call_status').html("This data comes from another server: " + data.html);
-<<<<<<< HEAD
-         
-=======
           //alert(data.html);
->>>>>>> origin/master
 		  $('#kookoo_click2call_status').html(data.html);
         });
 });
