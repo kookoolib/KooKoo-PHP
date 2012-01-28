@@ -76,14 +76,16 @@
 			$this->response->setAttribute( "filler", $filler);
 		}
 		
-		public function addPlayText($text,$speed=2)// to play text 
+		 public function addPlayText($text,$speed=2,$lang="EN")// to play text
 		{
-			$play_text =$this->doc->createElement("playtext",$text);
-			$play_text ->setAttribute( "speed", $speed );
-			//speed used for voice-rate speed limit form 1-9 
-			//if speed 1 plays slow, speed =9 plays fastly, this is only for nuance tts
-			$this->response->appendChild($play_text);
-		}
+                  $play_text =$this->doc->createElement("playtext",$text);
+                  $play_text ->setAttribute( "lang", $lang);
+                  //lang attribute now supports Hindi and Telugu with Kannada lang="TE" lang="KA" lang="HI"
+                  $play_text ->setAttribute( "speed", $speed );
+                   //speed used for voice-rate speed limit form 1-9
+                  //if speed 1 plays slow, speed =9 plays fastly, this is only for nuance tts
+                   $this->response->appendChild($play_text);
+                 }
 		
 		public function addHangup(){// To Disconnect the call
 			$hangup =$this->doc->createElement("hangup");
@@ -129,9 +131,9 @@
 			$play_audio =$this->doc->createElement("playaudio",$url);
 			$this->response->appendChild($play_audio);
 		}
-       public function addGoto($url){
-    	//url should be full url : 'http://host../nextapp.app'
-    	// it will jump to next url
+      		 public function addGoto($url){
+    		//url should be full url : 'http://host../nextapp.app'
+    		// it will jump to next url
 			$goto =$this->doc->createElement("gotourl",$url);
 			$this->response->appendChild($goto);
 		}
@@ -183,26 +185,27 @@ class CollectDtmf
 			call_user_func_array(array($this,$f),$a);
 			}
 		}
-	function __construct0()
+		function __construct0()
 		{
 			$this->doc= new DOMDocument("1.0", "UTF-8");
             $this->collect_dtmf= $this->doc->createElement("collectdtmf");
 			$this->doc->appendChild( $this->collect_dtmf);
 		}
-	function __construct3($max_digits,$term_char,$time_out=4000) //time out in ms
+		function __construct3($max_digits,$term_char,$time_out=4000) //time out in ms
 		{
 			$this->doc= new DOMDocument("1.0", "UTF-8");
-            $this->collect_dtmf= $this->doc->createElement("response");
+           		 $this->collect_dtmf= $this->doc->createElement("response");
 			$this->collect_dtmf->setAttribute( "l", $max_digits);
 			$this->collect_dtmf->setAttribute( "t", $term_char);
 			$this->collect_dtmf->setAttribute( "o", $time_out);
 			$this->doc->appendChild( $this->collect_dtmf);
 		}
-	public function setMaxDigits($maxDigits)
+		public function setMaxDigits($maxDigits)
 		{
 			$this->collect_dtmf->setAttribute("l", $maxDigits);
 		}
-	public function setTermChar($termChar){
+		public function setTermChar($termChar)
+		{
 		//if dtmf maxdigits not fixed and variable send termination
 		//example if your asking enter amount, user can enter any input 
 		// 1 - n number exampe 1 or 20 2000 etc
@@ -216,16 +219,18 @@ class CollectDtmf
 	    	$this->collect_dtmf->setAttribute("o", $timeOut=4000);
 	    	//time out in ms default is 4000ms,
 		}
-	public function addPlayText($text,$speed=2)
+                public function addPlayText($text,$speed=2,$lang="EN")
 		{
+			
+                        $play_text =$this->doc->createElement("playtext",$text);
+			$play_text ->setAttribute("speed", $speed );
 			//speed used for voice-rate speed limit form 1-9 
 			//if speed 1 plays slow, speed =9 plays fastly, this is only for nuance tts
-	
-			$play_text =$this->doc->createElement("playtext",$text);
-			$play_text ->setAttribute("speed", $speed );
+                         $play_text ->setAttribute( "lang", $lang);
+                        //lang attribute now supports Hindi and Telugu with Kannada lang="TE" lang="KA" lang="HI"
 			$this->collect_dtmf->appendChild($play_text);
 		}
-	public function addPlayAudio($url,$speed=2){
+		public function addPlayAudio($url,$speed=2){
 		// audio to play
 		//$url = 'http://ipadress/welcome.wav'
 		//wav file format must be
@@ -235,7 +240,7 @@ class CollectDtmf
 			$play_audio =$this->doc->createElement("playaudio",$url);
 			$this->collect_dtmf->appendChild($play_audio);
 		}
-	public function getRoot()
+		public function getRoot()
 		{
 			return $this->collect_dtmf;
 		}
