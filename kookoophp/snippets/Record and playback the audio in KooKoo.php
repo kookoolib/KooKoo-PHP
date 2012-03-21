@@ -15,6 +15,7 @@ else if($_REQUEST['event'] == 'Record' && $_SESSION['next_goto'] == 'Record_Stat
 {
 //recorded file will be come as  url in request parameter called data
 	 $r->addPlayText('your recorded audio is ');
+	 //You can also store the URL in your database if you want
 	 $_SESSION['record_url']=$_REQUEST['data'];
 	 $r->addPlayAudio($_SESSION['record_url']);
 	 $r->addPlayText('Thank you for calling, have a nice day');
