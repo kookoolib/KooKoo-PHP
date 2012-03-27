@@ -110,7 +110,7 @@
                 //$confno confirence number to set
                 $conf= $this->doc->createElement("conference",$confno);
                 $conf ->setAttribute( "record", $record ); // to enable conference recording, record = 'true'
-                // record file you can get http://recordings.kookoo.in/<kookoo-username>/<did>_<confno>.wav
+                // record file you can get http://recordings.kookoo.in/<kookoo-username>/<did><confno>.wav
                 $this->response->appendChild($conf);
          }
 
