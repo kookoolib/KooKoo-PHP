@@ -1,5 +1,6 @@
 <?php
 //Description:Sample Code Collecting mobile number and dialing out
+session_start();
 require_once("response.php");//response.php is the kookoo xml preparation class file
 $r = new Response();
 
