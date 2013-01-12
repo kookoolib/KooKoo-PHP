@@ -189,7 +189,7 @@ class Response {
     }
 
     public function playdtmf() {
-        $playdtmf = $this->doc->createElement("playtdtmf-i");
+        $playdtmf = $this->doc->createElement("playdtmf-i");
         $this->response->appendChild($playdtmf);
     }
 
