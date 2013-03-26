@@ -118,11 +118,13 @@ class Response {
      * 
      * <b>
      * format   format_code text        lang    Play As</b>
-     * Date     202         20110721    EN      July  21st  2011
      * Date     201         20110721    EN      Thursday July 21st 2011
+     * Date     202         20110721    EN      July  21st  2011
+     * Date     204         20110721    EN      July  21st  
      * Currency 402         53          EN      Fifty three rupees and zero zero paise
      * Currency 401         53          EN      it ignores numbers after decimal point
      * Digits   501         1234        EN      one two three four
+     * Digits     1         1234        EN      one thousand two hundred and thirty four
      * </pre>
      */
     public function addSayAs($text, $format_code=501, $lang="EN") {// Say-As supports for all languages for playing Date,Currency and Digits
