@@ -73,7 +73,7 @@ class Response {
     public function addPlayText($text, $speed=2, $lang="EN", $quality="best") {// to play text
         $play_text = $this->doc->createElement("playtext", $text);
         $play_text->setAttribute("lang", $lang);
-        //lang attribute now supports Hindi and Telugu with Kannada lang="TE" lang="KA" lang="HI"
+		//lang attribute currently supports English only attribute is lang="EN"
         $play_text->setAttribute("speed", $speed);
         //speed used for voice-rate speed limit form 1-9  //if speed 1 plays slow, speed =9 plays fastly, this is only for professional tts
         $play_text->setAttribute("quality", $quality);
