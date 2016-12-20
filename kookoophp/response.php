@@ -201,12 +201,12 @@ class Response {
     }
 
     //recordtag
-    public function addRecord($filename, $format="wav", $silence="4", $maxduration="60", $option="k") {
+    public function addRecord($filename, $format="wav", $silence="4", $maxduration="60", $termchar="#") {
         $record = $this->doc->createElement("record", $filename);
         $record->setAttribute("format", $format);
         $record->setAttribute("silence", $silence);
         $record->setAttribute("maxduration", $maxduration);
-        $record->setAttribute("option", $option); //k= keep recording after hangup
+        $record->setAttribute("termchar", $termchar); //Use termination character like *,#,digit etc to stop the recording
         $this->response->appendChild($record);
     }
 
