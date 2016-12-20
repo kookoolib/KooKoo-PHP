@@ -65,7 +65,7 @@ class Response {
     }
 
     public function setFiller($filler) {
-        //set filler yes or no 
+        //set filler yes or no
         //When, url invocation takes time, it would play the music back ground, untill get response from url
         $this->response->setAttribute("filler", $filler);
     }
@@ -107,20 +107,20 @@ class Response {
      * Gujarati=> GUJ,
      * Benagali=> BN,
      * Marathi=> MR,
-     * Oriya=> ORI 
+     * Oriya=> ORI
      * </pre>
      * @return void.
      * <pre>
-     * Format code's for attribute language english, you can 
+     * Format code's for attribute language english, you can
      * use the same code for other languages listed given
-     * 
+     *
      * <b>Example : </b>
-     * 
+     *
      * <b>
      * format   format_code text        lang    Play As</b>
      * Date     201         20110721    EN      Thursday July 21st 2011
      * Date     202         20110721    EN      July  21st  2011
-     * Date     204         20110721    EN      July  21st  
+     * Date     204         20110721    EN      July  21st
      * Currency 402         53          EN      Fifty three rupees and zero zero paise
      * Currency 401         53          EN      it ignores numbers after decimal point
      * Digits   501         1234        EN      one two three four
@@ -149,7 +149,7 @@ class Response {
         $dial->setAttribute("moh", $moh); //moh=default will be music on hold moh=ring for normal ring
         $dial->setAttribute("promptToCalledNumber", $promptToCalledNumber); //=no
         //If would like to play prompt to called number, give audio url
-        // promptToCalledNumber = 'http://www.kookoo.in/recordings/promptToCallerParty.wav' 
+        // promptToCalledNumber = 'http://www.kookoo.in/recordings/promptToCallerParty.wav'
         $dial->setAttribute("caller_id", $caller_id); //if you want the end user to get displayed different number on the device.Note the caller_id value is the did assigned to your KooKoo Account
         $this->response->appendChild($dial);
     }
@@ -244,7 +244,7 @@ class CollectDtmf {
 
     function __construct3($max_digits, $term_char, $time_out=4000) { //time out in ms
         $this->doc = new DOMDocument("1.0", "UTF-8");
-        $this->collect_dtmf = $this->doc->createElement("response");
+        $this->collect_dtmf = $this->doc->createElement("collectdtmf");
         $this->collect_dtmf->setAttribute("l", $max_digits);
         $this->collect_dtmf->setAttribute("t", $term_char);
         $this->collect_dtmf->setAttribute("o", $time_out);
@@ -257,16 +257,16 @@ class CollectDtmf {
 
     public function setTermChar($termChar) {
         //if dtmf maxdigits not fixed and variable send termination
-        //example if your asking enter amount, user can enter any input 
+        //example if your asking enter amount, user can enter any input
         // 1 - n number exampe 1 or 20 2000 etc
-        //then ask cutomer to enter amount followed by hash set termchar=# 
+        //then ask cutomer to enter amount followed by hash set termchar=#
         //set maxdigits=<maximum number to be allowed>
 
         $this->collect_dtmf->setAttribute("t", $termChar);
     }
 
-    public function setTimeOut($timeOut) {
-        $this->collect_dtmf->setAttribute("o", $timeOut = 4000);
+    public function setTimeOut($timeOut = 4000) {
+        $this->collect_dtmf->setAttribute("o", $timeOut);
         //time out in ms default is 4000ms,
     }
 
@@ -274,7 +274,7 @@ class CollectDtmf {
 
         $play_text = $this->doc->createElement("playtext", $text);
         $play_text->setAttribute("speed", $speed);
-        //speed used for voice-rate speed limit form 1-9 
+        //speed used for voice-rate speed limit form 1-9
         //if speed 1 plays slow, speed =9 plays fastly, this is only for professional tts
         $play_text->setAttribute("lang", $lang);
         //lang attribute now supports Hindi and Telugu with Kannada lang="TE" lang="KA" lang="HI"
