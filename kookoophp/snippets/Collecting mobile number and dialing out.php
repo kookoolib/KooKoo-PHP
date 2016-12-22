@@ -6,15 +6,15 @@ $r = new Response();
 
 if($_REQUEST['event']== "NewCall" ||$_SESSION['next_goto']=="Menu1")
 {
-	
+
 	$collectInput = New CollectDtmf();
 	$collectInput->addPlayText('please enter the number that you want to dial followed by hash, if it is s t d number, enter 0 as pre fix ',3);
 	$collectInput->setMaxDigits('15'); //max inputs to be allowed
 	$collectInput->setTimeOut('4000');  //maxtimeout if caller not give any inputs
-	$collectInput->setTermChar('#');  
+	$collectInput->setTermChar('#');
 	$r->addCollectDtmf($collectInput);
     $_SESSION['next_goto']='Menu1_CheckInput1';
-	
+
 }
 else if($_REQUEST['event'] == 'GotDTMF' && $_SESSION['next_goto'] == 'Menu1_CheckInput1' )
 {
@@ -26,12 +26,13 @@ else if($_REQUEST['event'] == 'GotDTMF' && $_SESSION['next_goto'] == 'Menu1_Chec
 	 $r->addPlayText('you have not entered any input');
 	 $_SESSION['next_goto']='Menu1';
      }
-     else 
+     else
 	 {
      $_SESSION['dial'] = $_REQUEST['data'];
      $r->addPlayText('please wait while we transfer your call to out customer care');
-	 $r->addDial($_SESSION['dial'],'true',1000,30,'ring');
-	 $_SESSION['next_goto'] = 'Dial1_Status';
+	   $r->addDial($_SESSION['dial'],'true',1000,30,'default','no','91XXXXXXXXX');
+	   //Your KooKoo Number can be given in place of caller id 91XXXXXXXXX,1000 is the limit time in seconds.
+	   $_SESSION['next_goto'] = 'Dial1_Status';
      }
 }
 else if($_REQUEST['event'] == 'Dial' && $_SESSION['next_goto'] == 'Dial1_Status' )
@@ -52,7 +53,7 @@ else if($_REQUEST['event'] == 'Dial' && $_SESSION['next_goto'] == 'Dial1_Status'
 	 	 $r->addHangup();	// do something more or send hang up to kookoo
 	     // call is answered
 	 }
-	 
+
 }
 $r->send();
-?> 
+?>
