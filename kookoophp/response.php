@@ -144,9 +144,9 @@ class Response {
     public function addDial($no, $record="false", $limittime="1000", $timeout, $moh='default', $promptToCalledNumber ='no', $caller_id) {
         $dial = $this->doc->createElement("dial", $no);
         $dial->setAttribute("record", $record);
-        $dial->setAttribute("limittime", $limittime); // for max calltime //maxtime call allowed after called_number answered
+        $dial->setAttribute("limittime", $limittime); // for max calltime //maxtime call allowed after called_number answered,Limit time in seconds
         $dial->setAttribute("timeout", $timeout); //time out in ms
-        $dial->setAttribute("moh", $moh); //moh=default will be music on hold moh=ring for normal ring
+        $dial->setAttribute("moh", $moh); //moh=default will be music on hold moh=ring for normal ring,moh=normal for telco messages
         $dial->setAttribute("promptToCalledNumber", $promptToCalledNumber); //=no
         //If would like to play prompt to called number, give audio url
         // promptToCalledNumber = 'http://www.kookoo.in/recordings/promptToCallerParty.wav'
@@ -201,10 +201,9 @@ class Response {
     }
 
     //recordtag
-    public function addRecord($filename, $format="wav", $silence="4", $maxduration="60", $termchar="#") {
+    public function addRecord($filename,$silence="4",$maxduration="60",$termchar="#") {
         $record = $this->doc->createElement("record", $filename);
-        $record->setAttribute("format", $format);
-        $record->setAttribute("silence", $silence);
+        $record->setAttribute("silence", $silence);//after the Mentioned secs the record shall stop and status will come as silence.
         $record->setAttribute("maxduration", $maxduration);
         $record->setAttribute("termchar", $termchar); //Use termination character like *,#,digit etc to stop the recording
         $this->response->appendChild($record);
