@@ -220,6 +220,7 @@ class Response {
     $recognize->setAttribute("grammar", $grammar);
     $this->response->appendChild($recognize);
   }
+  
   // Parse the XML.and Deconstruct
   
   public function getXML() {
