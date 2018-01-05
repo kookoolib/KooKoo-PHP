@@ -127,6 +127,7 @@ class Response {
   * Digits     1         1234        EN      one thousand two hundred and thirty four
   * </pre>
   */
+  
   public function addSayAs($text, $format_code=501, $lang="EN") {// Say-As supports for all languages for playing Date,Currency and Digits
     $SayAs = $this->doc->createElement("Say-As", $text);
     $SayAs->setAttribute("format", $format_code);
