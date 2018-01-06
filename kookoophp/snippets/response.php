@@ -210,7 +210,7 @@ class Response {
     $this->response->appendChild($record);
   }
   //voice recognition tag
-  public function addRecognize($type="zena",$timeout="5", $silence="10",$lang="en",$length="1",$grammar="yesno")
+  public function addRecognize($type="zena",$timeout="5", $silence="10",$lang="en",$length="1",$grammar="digits")
   {
     $recognize = $this->doc->createElement("recognize");
     $recognize->setAttribute("type", $type);
