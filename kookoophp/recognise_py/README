@@ -1,0 +1,13 @@
+deploy application into python supported server like Apache etc. 
+
+point the url(http://server-hosted/recognise_py/ivr.py) to the kookoo number
+
+to get the kookoo account. please login into kookoo(https://www.kookoo.in/) and register for the account. 
+
+for python to run on apache, you can check the below document
+
+https://docs.python.org/2/howto/webservers.html
+
+
+
+
