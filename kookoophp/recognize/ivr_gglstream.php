@@ -1,5 +1,5 @@
 <?php
-require 'response.php';//'test_responce.php'; //include response.php into your code
+require 'response.php'; //include response.php into your code
 $r = new Response();
 $state = isset($_GET['state'])?$_GET['state']:'ask_language';
 
